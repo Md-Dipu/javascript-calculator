@@ -1,0 +1,76 @@
+:root {
+    --body-bg: #353535;
+    --container-bg: #10101B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+    background-color: var(--body-bg);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 350px;
+    border: 1px solid #2e2e2e;
+    border-radius: 5px;
+    padding: 1.5em;
+    background-color: var(--container-bg);
+}
+
+.app-title {
+    text-align: center;
+    color: white;
+    font-size: 1em;
+}
+
+.display {
+    text-align: right;
+    font-size: 3em;
+    margin-top: .25em;
+    margin-bottom: .25em;
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: .75em;
+    grid-row-gap: .75em;
+}
+
+.btn {
+    padding: .725em 0;
+    font-size: 1.25em;
+    font-weight: bold;
+    background-color: #404040;
+    color: white;
+    border: none;
+}
+
+.btn:active {
+    opacity: 0.7;
+}
+
+.btn.btn-clear {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.btn.btn-equal {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+.btn.btn-blue {
+    background-color: #1a84ad;
+}
