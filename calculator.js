@@ -29,7 +29,7 @@ for (let i = 0; i < btns.length; ++i) {
         });
     }
 
-    // oprator handler
+    // operator handler
     else if (['+', '-', '*', '/'].includes(btnValue)) {
         btn.addEventListener('click', () => display.innerText = '0');
     }
