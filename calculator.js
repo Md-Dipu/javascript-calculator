@@ -8,6 +8,11 @@ class Operation {
             this.counter = inputNumber;
         }
     };
+
+    reset = () => {
+        this.counter = null;
+        this.currentOperator = null;
+    };
 }
 
 // display field
@@ -58,11 +63,9 @@ for (let i = 0; i < btns.length; ++i) {
     // result handler
     else if (btnValue === '=') {
         btn.addEventListener('click', () => {
-            /* 1. set inputed number
-             * 2. display result
-             * 3. clear counter and operator
-             * 4. 
-             */
+            calc.setCounter(parseFloat(display.innerText));
+            display.innerText = calc.counter;
+            calc.reset();
         });
     }
 
@@ -74,10 +77,8 @@ for (let i = 0; i < btns.length; ++i) {
     // 'Clear' clear display and reset counter handler
     else {
         btn.addEventListener('click', () => {
-            /* 1. clear counter
-             * 2. clear operator
-             * 3. clear display
-             */
+            calc.reset();
+            display.innerText = '0';
         });
     }
 }
