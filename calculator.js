@@ -3,7 +3,7 @@ class Operation {
     counter = null;
     currentOperator = null;
 
-    setInput = (inputNumber) => {
+    setCounter = (inputNumber) => {
         if (this.counter === null) {
             this.counter = inputNumber;
         }
