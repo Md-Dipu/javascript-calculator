@@ -3,6 +3,7 @@ class Operation {
     counter = null;
     currentOperator = null;
     isOperatorAttached = false;
+    afterView = true;
 
     setCounter = (inputNumber) => {
         if (this.counter === null) {
@@ -16,6 +17,7 @@ class Operation {
         this.counter = null;
         this.currentOperator = null;
         this.isOperatorAttached = false;
+        this.afterView = true;
     };
 
     // private: operation executioner
@@ -23,6 +25,15 @@ class Operation {
         switch (this.currentOperator) {
             case '+':
                 this.counter += newNumber;
+                break;
+            case '-':
+                this.counter -= newNumber;
+                break;
+            case '*':
+                this.counter *= newNumber;
+                break;
+            case '/':
+                this.counter /= newNumber;
                 break;
         }
     };
@@ -43,9 +54,10 @@ for (let i = 0; i < btns.length; ++i) {
     // number pad handler
     if (!isNaN(parseInt(btnValue))) {
         btn.addEventListener('click', e => {
-            if (calc.isOperatorAttached) {
+            if (calc.isOperatorAttached || calc.afterView) {
                 display.innerText = '0';
                 calc.isOperatorAttached = false;
+                calc.afterView = false;
             }
             let current = display.innerText;
             current += e.target.innerText;
@@ -60,9 +72,10 @@ for (let i = 0; i < btns.length; ++i) {
     // float point handler
     else if (btnValue === '.') {
         btn.addEventListener('click', e => {
-            if (calc.isOperatorAttached) {
+            if (calc.isOperatorAttached || calc.afterView) {
                 display.innerText = '0';
                 calc.isOperatorAttached = false;
+                calc.afterView = false;
             }
             const current = display.innerText;
             if (!current.includes('.'))
