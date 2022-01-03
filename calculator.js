@@ -7,6 +7,8 @@ class Operation {
     setCounter = (inputNumber) => {
         if (this.counter === null) {
             this.counter = inputNumber;
+        } else {
+            this.#operationExe(inputNumber);
         }
     };
 
@@ -14,6 +16,15 @@ class Operation {
         this.counter = null;
         this.currentOperator = null;
         this.isOperatorAttached = false;
+    };
+
+    // private: operation executioner
+    #operationExe = (newNumber) => {
+        switch (this.currentOperator) {
+            case '+':
+                this.counter += newNumber;
+                break;
+        }
     };
 }
 
@@ -32,6 +43,10 @@ for (let i = 0; i < btns.length; ++i) {
     // number pad handler
     if (!isNaN(parseInt(btnValue))) {
         btn.addEventListener('click', e => {
+            if (calc.isOperatorAttached) {
+                display.innerText = '0';
+                calc.isOperatorAttached = false;
+            }
             let current = display.innerText;
             current += e.target.innerText;
             if (current.includes('.') && e.target.innerText === '0') {
@@ -45,6 +60,10 @@ for (let i = 0; i < btns.length; ++i) {
     // float point handler
     else if (btnValue === '.') {
         btn.addEventListener('click', e => {
+            if (calc.isOperatorAttached) {
+                display.innerText = '0';
+                calc.isOperatorAttached = false;
+            }
             const current = display.innerText;
             if (!current.includes('.'))
                 display.insertAdjacentText('beforeend', e.target.innerText);
@@ -58,6 +77,7 @@ for (let i = 0; i < btns.length; ++i) {
             if (!calc.isOperatorAttached) {
                 calc.setCounter(parseFloat(display.innerText));
                 display.innerText = calc.counter;
+                calc.isOperatorAttached = true;
             }
         });
     }
