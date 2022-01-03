@@ -1,6 +1,13 @@
 // operation and counter
 class Operation {
+    counter = null;
+    currentOperator = null;
 
+    setInput = (inputNumber) => {
+        if (this.counter === null) {
+            this.counter = inputNumber;
+        }
+    };
 }
 
 // display field
@@ -33,21 +40,29 @@ for (let i = 0; i < btns.length; ++i) {
         btn.addEventListener('click', e => {
             const current = display.innerText;
             if (!current.includes('.'))
-                display.innerText += e.target.innerText;
+                display.insertAdjacentText('beforeend', e.target.innerText);
         });
     }
 
     // operation handler
     else if (['+', '-', '*', '/'].includes(btnValue)) {
         btn.addEventListener('click', e => {
-
+            /* 1. set inputed number
+             * 2. set operator
+             * 3. change operator
+             * 4. 
+             */
         });
     }
 
     // result handler
     else if (btnValue === '=') {
         btn.addEventListener('click', () => {
-
+            /* 1. set inputed number
+             * 2. display result
+             * 3. clear counter and operator
+             * 4. 
+             */
         });
     }
 
@@ -59,7 +74,10 @@ for (let i = 0; i < btns.length; ++i) {
     // 'Clear' clear display and reset counter handler
     else {
         btn.addEventListener('click', () => {
-
+            /* 1. clear counter
+             * 2. clear operator
+             * 3. clear display
+             */
         });
     }
 }
