@@ -1,5 +1,13 @@
+// operation and counter
+class Operation {
+
+}
+
 // display field
 const display = document.querySelector('.display');
+
+// Create calculator object
+const calc = new Operation();
 
 // key pad event handler
 const btns = document.getElementsByClassName('btn');
@@ -12,10 +20,11 @@ for (let i = 0; i < btns.length; ++i) {
         btn.addEventListener('click', e => {
             let current = display.innerText;
             current += e.target.innerText;
-            if (current.includes('.') && e.target.innerText === '0')
+            if (current.includes('.') && e.target.innerText === '0') {
                 display.innerText = current;
-            else
+            } else {
                 display.innerText = parseFloat(current);
+            }
         });
     }
 
@@ -23,20 +32,23 @@ for (let i = 0; i < btns.length; ++i) {
     else if (btnValue === '.') {
         btn.addEventListener('click', e => {
             const current = display.innerText;
-            if (!current.includes('.')) {
+            if (!current.includes('.'))
                 display.innerText += e.target.innerText;
-            }
         });
     }
 
-    // operator handler
+    // operation handler
     else if (['+', '-', '*', '/'].includes(btnValue)) {
-        btn.addEventListener('click', () => display.innerText = '0');
+        btn.addEventListener('click', e => {
+
+        });
     }
 
-    // '=' display result handler
+    // result handler
     else if (btnValue === '=') {
-        btn.addEventListener('click', () => display.innerText = '0');
+        btn.addEventListener('click', () => {
+
+        });
     }
 
     // 'C' clear display handler
@@ -46,6 +58,8 @@ for (let i = 0; i < btns.length; ++i) {
 
     // 'Clear' clear display and reset counter handler
     else {
-        btn.addEventListener('click', () => display.innerText = '0');
+        btn.addEventListener('click', () => {
+
+        });
     }
 }
