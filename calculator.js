@@ -2,6 +2,7 @@
 class Operation {
     counter = null;
     currentOperator = null;
+    isOperatorAttached = false;
 
     setCounter = (inputNumber) => {
         if (this.counter === null) {
@@ -12,6 +13,7 @@ class Operation {
     reset = () => {
         this.counter = null;
         this.currentOperator = null;
+        this.isOperatorAttached = false;
     };
 }
 
@@ -49,14 +51,14 @@ for (let i = 0; i < btns.length; ++i) {
         });
     }
 
-    // operation handler
+    // operator handler
     else if (['+', '-', '*', '/'].includes(btnValue)) {
         btn.addEventListener('click', e => {
-            /* 1. set inputed number
-             * 2. set operator
-             * 3. change operator
-             * 4. 
-             */
+            calc.currentOperator = btnValue;
+            if (!calc.isOperatorAttached) {
+                calc.setCounter(parseFloat(display.innerText));
+                display.innerText = calc.counter;
+            }
         });
     }
 
