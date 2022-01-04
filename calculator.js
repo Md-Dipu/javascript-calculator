@@ -50,15 +50,20 @@ const btns = document.getElementsByClassName('btn');
 for (let i = 0; i < btns.length; ++i) {
     const btn = btns[i];
     const btnValue = btns[i].innerText;
+    const checkCondition = () => {
+        const prev = display.value;
+        if (calc.isOperatorAttached || calc.afterView) {
+            display.value = '0';
+            calc.isOperatorAttached = false;
+            calc.afterView = false;
+        }
+        return prev;
+    };
 
     // number pad handler
     if (!isNaN(parseInt(btnValue))) {
         btn.addEventListener('click', e => {
-            if (calc.isOperatorAttached || calc.afterView) {
-                display.value = '0';
-                calc.isOperatorAttached = false;
-                calc.afterView = false;
-            }
+            checkCondition();
             let current = display.value;
             current += e.target.innerText;
             if (current.includes('.') && e.target.innerText === '0') {
@@ -72,11 +77,7 @@ for (let i = 0; i < btns.length; ++i) {
     // float point handler
     else if (btnValue === '.') {
         btn.addEventListener('click', e => {
-            if (calc.isOperatorAttached || calc.afterView) {
-                display.value = '0';
-                calc.isOperatorAttached = false;
-                calc.afterView = false;
-            }
+            checkCondition();
             const current = display.value;
             if (!current.includes('.'))
                 display.value += e.target.innerText;
@@ -86,6 +87,7 @@ for (let i = 0; i < btns.length; ++i) {
     // positive and negative number
     else if (btnValue === '+/-') {
         btn.addEventListener('click', () => {
+            display.value = checkCondition();
             if (display.value.includes('-')) {
                 display.value = display.value.substr(1);
             } else if (parseFloat(display.value) !== 0) {
