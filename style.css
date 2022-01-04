@@ -69,11 +69,6 @@ body {
     opacity: 0.7;
 }
 
-.btn.btn-clear {
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-
 .btn.btn-equal {
     grid-column-start: 3;
     grid-column-end: 5;

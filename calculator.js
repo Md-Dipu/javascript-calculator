@@ -83,6 +83,17 @@ for (let i = 0; i < btns.length; ++i) {
         });
     }
 
+    // positive and negative number
+    else if (btnValue === '+/-') {
+        btn.addEventListener('click', () => {
+            if (display.value.includes('-')) {
+                display.value = display.value.substr(1);
+            } else if (parseFloat(display.value) !== 0) {
+                display.value = '-'.concat(display.value);
+            }
+        });
+    }
+
     // operator handler
     else if (['+', '-', '*', '/'].includes(btnValue)) {
         btn.addEventListener('click', e => {
