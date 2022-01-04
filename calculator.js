@@ -55,16 +55,16 @@ for (let i = 0; i < btns.length; ++i) {
     if (!isNaN(parseInt(btnValue))) {
         btn.addEventListener('click', e => {
             if (calc.isOperatorAttached || calc.afterView) {
-                display.innerText = '0';
+                display.value = '0';
                 calc.isOperatorAttached = false;
                 calc.afterView = false;
             }
-            let current = display.innerText;
+            let current = display.value;
             current += e.target.innerText;
             if (current.includes('.') && e.target.innerText === '0') {
-                display.innerText = current;
+                display.value = current;
             } else {
-                display.innerText = parseFloat(current);
+                display.value = parseFloat(current);
             }
         });
     }
@@ -73,13 +73,13 @@ for (let i = 0; i < btns.length; ++i) {
     else if (btnValue === '.') {
         btn.addEventListener('click', e => {
             if (calc.isOperatorAttached || calc.afterView) {
-                display.innerText = '0';
+                display.value = '0';
                 calc.isOperatorAttached = false;
                 calc.afterView = false;
             }
-            const current = display.innerText;
+            const current = display.value;
             if (!current.includes('.'))
-                display.insertAdjacentText('beforeend', e.target.innerText);
+                display.value += e.target.innerText;
         });
     }
 
@@ -88,8 +88,8 @@ for (let i = 0; i < btns.length; ++i) {
         btn.addEventListener('click', e => {
             calc.currentOperator = btnValue;
             if (!calc.isOperatorAttached) {
-                calc.setCounter(parseFloat(display.innerText));
-                display.innerText = calc.counter;
+                calc.setCounter(parseFloat(display.value));
+                display.value = calc.counter;
                 calc.isOperatorAttached = true;
             }
         });
@@ -98,22 +98,22 @@ for (let i = 0; i < btns.length; ++i) {
     // result handler
     else if (btnValue === '=') {
         btn.addEventListener('click', () => {
-            calc.setCounter(parseFloat(display.innerText));
-            display.innerText = calc.counter;
+            calc.setCounter(parseFloat(display.value));
+            display.value = calc.counter;
             calc.reset();
         });
     }
 
     // 'C' clear display handler
     else if (btnValue === 'C') {
-        btn.addEventListener('click', () => display.innerText = '0');
+        btn.addEventListener('click', () => display.value = '0');
     }
 
     // 'Clear' clear display and reset counter handler
     else {
         btn.addEventListener('click', () => {
             calc.reset();
-            display.innerText = '0';
+            display.value = '0';
         });
     }
 }
