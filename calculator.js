@@ -122,11 +122,11 @@ for (let i = 0; i < btns.length; ++i) {
         btn.addEventListener('click', () => display.value = '0');
     }
 
-    // 'Clear' clear display and reset counter handler
+    // 'AC' clear display and reset counter handler
     else {
         btn.addEventListener('click', () => {
-            calc.reset();
             display.value = '0';
+            calc.reset();
         });
     }
 }
