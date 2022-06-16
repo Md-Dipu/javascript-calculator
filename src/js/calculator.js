@@ -1,43 +1,4 @@
-// operation and counter
-class Operation {
-    counter = null;
-    currentOperator = null;
-    isOperatorAttached = false;
-    afterView = true;
-
-    setCounter = (inputNumber) => {
-        if (this.counter === null) {
-            this.counter = inputNumber;
-        } else {
-            this.#operationExe(inputNumber);
-        }
-    };
-
-    reset = () => {
-        this.counter = null;
-        this.currentOperator = null;
-        this.isOperatorAttached = false;
-        this.afterView = true;
-    };
-
-    // private: operation executioner
-    #operationExe = (newNumber) => {
-        switch (this.currentOperator) {
-            case '+':
-                this.counter += newNumber;
-                break;
-            case '-':
-                this.counter -= newNumber;
-                break;
-            case '*':
-                this.counter *= newNumber;
-                break;
-            case '/':
-                this.counter /= newNumber;
-                break;
-        }
-    };
-}
+import { Operation } from "./operation.js";
 
 // display field
 const display = document.querySelector('.display');
@@ -98,7 +59,7 @@ for (let i = 0; i < btns.length; ++i) {
 
     // operator handler
     else if (['+', '-', '*', '/'].includes(btnValue)) {
-        btn.addEventListener('click', e => {
+        btn.addEventListener('click', () => {
             calc.currentOperator = btnValue;
             if (!calc.isOperatorAttached) {
                 calc.setCounter(parseFloat(display.value));
