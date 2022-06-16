@@ -1,0 +1,23 @@
+{
+  "name": "javascript-calculator",
+  "version": "1.0.0",
+  "description": "It's a simple calculator web app created using Javascript. Preview this web app [Click here](https://javascript-calculator-simple.netlify.app/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Md-Dipu/javascript-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Md-Dipu/javascript-calculator/issues"
+  },
+  "homepage": "https://github.com/Md-Dipu/javascript-calculator#readme",
+  "devDependencies": {
+    "eslint": "^8.17.0"
+  }
+}
